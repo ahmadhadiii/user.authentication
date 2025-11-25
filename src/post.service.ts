@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
 import { Post, Prisma } from './generated/prisma';
 
+const prisma = new PrismaService()
 @Injectable()
 export class PostsService {
   constructor(private prisma: PrismaService) {}
@@ -53,5 +54,9 @@ export class PostsService {
     return this.prisma.post.delete({
       where,
     });
+  }
+
+  async getPosts(){
+    return this.prisma.post.findMany()
   }
 }

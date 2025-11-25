@@ -24,6 +24,11 @@ export class AppController {
     return this.postService.post ({ id: Number(id) })
   }
 
+    @Get('posts')
+  async getUsers() {
+    return this.postService.getPosts()
+  }
+
   @Get('feed')
   async getPublishedPosts(): Promise<PostModel[]> {
     return this.postService.posts({
